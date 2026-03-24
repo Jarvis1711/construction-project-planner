@@ -1,52 +1,51 @@
 # Construction Project Planner
 
-## Solution Summary
-Production-ready domain application.
+## Phase 3 Upgrade Summary
+Production-oriented operations solution for construction project planner workflows.
 
-This Phase-2 implementation is a domain-ready, deployable web application for **Real-Time SaaS** workflows.
+## Domain Context
+- Domain: **Operations**
+- Core Entity: **Operational Task**
+- Lifecycle Statuses: `scheduled, in-progress, at-risk, completed`
 
-## Core Capabilities
-- Responsive dashboard with KPI cards and recent activity table
-- Domain record lifecycle with full CRUD (web + API)
-- Dynamic schema fields tailored to this use case
-- Status pipeline: `queued, live, paused, closed`
-- Docker + Gunicorn deployment assets, CI checks, and Pytest tests
+## Architecture
+- Flask application factory pattern (`app/__init__.py`)
+- Layered backend (`routes` → `services` → `repositories`)
+- SQLAlchemy persistence with JSON payload modeling
+- REST API + HTML dashboard + CSV exports
+- Deployment surfaces (`Dockerfile`, `docker-compose.yml`, `Procfile`, `wsgi.py`)
 
-## Domain Model
-- Primary entity: **Construction Project Session**
-- Collection: **Construction Project Sessions**
-- Dynamic fields:
-- Channel/Room (`channel_name` / text)
-- Participants (`participant_count` / number)
-- Latency Target (ms) (`latency_target_ms` / number)
+## Capability Set
+- Role-ready modular architecture (routes, services, repositories)
+- Operational dashboard with status metrics and pipeline view
+- CRUD workflows via web UI and REST API
+- CSV export endpoint for reporting
+- Ready for production via Gunicorn, Docker, and Procfile
 
-## Operational Workflow
-1. Create session
-2. Invite users
-3. Track live events
-4. Archive session
+## Dynamic Schema
+- Location (`location` / text)
+- Capacity (`capacity` / number)
+- Execution Notes (`execution_notes` / textarea)
 
-## API
-- `GET /api/health`
-- `GET /api/schema`
-- `GET /api/records`
-- `POST /api/records`
-- `GET /api/metrics`
-
-## Run Locally
+## Quick Start
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
-python app.py
+python run.py
 ```
 
-## Docker Run
-```bash
-docker compose up --build
-```
+## API Highlights
+- `GET /api/health`
+- `GET /api/schema`
+- `GET /api/items`
+- `POST /api/items`
+- `PUT /api/items/<id>`
+- `DELETE /api/items/<id>`
+- `GET /api/metrics`
 
 ## Proof of Concept
 - [proof-of-concept.md](proof-of-concept.md)
 - [proof/demo-output.txt](proof/demo-output.txt)
 - [proof/ui-preview.svg](proof/ui-preview.svg)
+- [proof/architecture.md](proof/architecture.md)

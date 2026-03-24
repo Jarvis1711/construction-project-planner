@@ -1,19 +1,19 @@
 GET /api/health
-{"status":"ok","app":"Construction Project Planner","domain":"Real-Time SaaS"}
+{"status":"ok"}
 
 GET /api/schema
-{"statuses":["queued", "live", "paused", "closed"],"fields":[{"key":"channel_name"},{"key":"participant_count"},{"key":"latency_target_ms"}]}
+{"domain":"Operations","entity":"Operational Task","statuses":["scheduled", "in-progress", "at-risk", "completed"]}
 
-POST /api/records
+POST /api/items
 {
   "id": 1,
-  "title": "Demo Record",
-  "status": "live",
+  "title": "Phase3 Demo",
+  "status": "scheduled",
   "payload": {
-    "channel_name": "Demo value",
-    "participant_count": 12,
-    "latency_target_ms": "seed note"
+    "location": "sample",
+    "capacity": 5,
+    "execution_notes": "notes"
   },
-  "created_at": "2026-03-24T15:52:21.874591+00:00",
-  "updated_at": "2026-03-24T15:52:21.874591+00:00"
+  "created_at": "2026-03-24T16:15:11.070954+00:00",
+  "updated_at": "2026-03-24T16:15:11.070954+00:00"
 }
